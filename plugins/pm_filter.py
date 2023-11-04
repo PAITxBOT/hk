@@ -99,7 +99,7 @@ async def next_page(bot, query):
         ]
     elif ENABLE_SHORTLINK and not settings['button']:
         btn = []
-        for file in files
+        for file in files:
             files_link += f"""<b>\n\n‼️ <a href={await get_shortlink(query.message.chat.id, f'https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}')}>[{get_size(file.file_size)}] {file.file_name}</a></b>"""
 
     elif settings['button'] and not ENABLE_SHORTLINK:
@@ -111,7 +111,7 @@ async def next_page(bot, query):
         ]
     else:
         btn = []
-        for file in files
+        for file in files:
             files_link += f"""<b>\n\n‼️ <a href=https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}>[{get_size(file.file_size)}] {file.file_name}</a></b>"""
 
     btn.insert(0,
@@ -615,7 +615,7 @@ async def auto_filter(client, msg, spoll=False):
         ]
     elif ENABLE_SHORTLINK and not settings['button']:
         btn = []
-        for file in files
+        for file in files:
             files_link += f"""<b>\n\n‼️ <a href={await get_shortlink(message.chat.id, f'https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}')}>[{get_size(file.file_size)}] {file.file_name}</a></b>"""
 
     elif settings['button'] and not ENABLE_SHORTLINK:
@@ -627,7 +627,7 @@ async def auto_filter(client, msg, spoll=False):
         ]
     else:
         btn = []
-        for file in files
+        for file in files:
             files_link += f"""<b>\n\n‼️ <a href=https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}>[{get_size(file.file_size)}] {file.file_name}</a></b>"""
 
     btn.insert(0,
