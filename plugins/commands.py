@@ -389,9 +389,11 @@ async def settings(client, message):
             and str(userid) not in ADMINS
     ):
         return
-
     settings = await get_settings(grp_id)
-
+    if 'is_shortlink' not in settings.keys():
+        await save_group_settings(grp_id, 'is_shortlink', False)
+    else:
+        pass
     if settings is not None:
         buttons = [
             [
@@ -409,6 +411,10 @@ async def settings(client, message):
             [
                 InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴘᴀɢᴇ', callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}'),
                  InlineKeyboardButton('ʙᴜᴛᴛᴏɴ' if settings["button"] else 'ᴛᴇxᴛ', callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
+            ],
+            [
+                InlineKeyboardButton('sʜᴏʀᴛɴᴇʀ ʟɪɴᴋ', callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{grp_id}',),
+                InlineKeyboardButton('ᴇɴᴀʙʟᴇ' if settings["is_shortlink"] else 'ᴅɪsᴀʙʟᴇ', callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{grp_id}',),
             ]
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
