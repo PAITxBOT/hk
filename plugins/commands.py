@@ -27,9 +27,6 @@ async def start(client, message):
             ],
             [
                 InlineKeyboardButton('⚡ Movie Updates ⚡', url=f"https://telegram.me/real_MoviesAdda1"),
-            ],
-            [
-                InlineKeyboardButton(text=DOWNLOAD_TEXT_NAME,url=DOWNLOAD_TEXT_URL)
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -341,24 +338,13 @@ async def delete(bot, message):
 
 @Client.on_message(filters.command('deleteall') & filters.user(ADMINS))
 async def delete_all_index(bot, message):
-    await message.reply_text(
-        '**𝚃𝙷𝙸𝚂 𝙿𝚁𝙾𝙲𝙴𝚂𝚂 𝚆𝙸𝙻𝙻 𝙳𝙴𝙻𝙴𝚃𝙴 𝙰𝙻𝙻 𝚃𝙷𝙴 𝙵𝙸𝙻𝙴𝚂 𝙵𝚁𝙾𝙼 𝚈𝙾𝚄𝚁 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴.\n𝙳𝙾 𝚈𝙾𝚄 𝚆𝙰𝙽𝚃 𝚃𝙾 𝙲𝙾𝙽𝚃𝙸𝙽𝚄𝙴 𝚃𝙷𝙸𝚂..??**',
+    await message.reply_text('**𝚃𝙷𝙸𝚂 𝙿𝚁𝙾𝙲𝙴𝚂𝚂 𝚆𝙸𝙻𝙻 𝙳𝙴𝙻𝙴𝚃𝙴 𝙰𝙻𝙻 𝚃𝙷𝙴 𝙵𝙸𝙻𝙴𝚂 𝙵𝚁𝙾𝙼 𝚈𝙾𝚄𝚁 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴.\n𝙳𝙾 𝚈𝙾𝚄 𝚆𝙰𝙽𝚃 𝚃𝙾 𝙲𝙾𝙽𝚃𝙸𝙽𝚄𝙴 𝚃𝙷𝙸𝚂..??**', quote=True,
         reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="⚡ 𝐘𝐞𝐬 ⚡", callback_data="autofilter_delete"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="❄ 𝐂𝐚𝐧𝐜𝐞𝐥 ❄", callback_data="close_data"
-                    )
-                ],
-            ]
-        ),
-        quote=True,
-    )
+            [[
+                InlineKeyboardButton(text="⚡ 𝐘𝐞𝐬 ⚡", callback_data="autofilter_delete")
+            ],[
+                InlineKeyboardButton(text="❄ 𝐂𝐚𝐧𝐜𝐞𝐥 ❄", callback_data="close_data")
+            ]]))
 
 
 @Client.on_callback_query(filters.regex(r'^autofilter_delete'))
@@ -409,69 +395,23 @@ async def settings(client, message):
     if settings is not None:
         buttons = [
             [
-                InlineKeyboardButton(
-                    '𝐅𝐈𝐋𝐓𝐄𝐑 𝐁𝐔𝐓𝐓𝐎𝐍',
-                    callback_data=f'setgs#button#{settings["button"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '𝐒𝐈𝐍𝐆𝐋𝐄' if settings["button"] else '𝐃𝐎𝐔𝐁𝐋𝐄',
-                    callback_data=f'setgs#button#{settings["button"]}#{grp_id}',
-                ),
+                InlineKeyboardButton('ғɪʟᴇ sᴇɴᴅ ᴍᴏᴅᴇ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
+                InlineKeyboardButton('ᴇɴᴀʙʟᴇ' if settings["botpm"] else 'ᴅɪsᴀʙʟᴇ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐁𝐎𝐓 𝐏𝐌',
-                    callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["botpm"] else '❌ 𝐍𝐎',
-                    callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
-                ),
+                InlineKeyboardButton('ɪᴍᴅʙ ᴘᴏsᴛᴇʀ', callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}'),
+                InlineKeyboardButton('ᴇɴᴀʙʟᴇ' if settings["imdb"] else 'ᴅɪsᴀʙʟᴇ', callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐅𝐈𝐋𝐄 𝐒𝐄𝐂𝐔𝐑𝐄',
-                    callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["file_secure"] else '❌ 𝐍𝐎',
-                    callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}',
-                ),
+                InlineKeyboardButton('sᴘᴇʟʟ ᴄʜᴇᴄᴋ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}'),
+                InlineKeyboardButton('ᴇɴᴀʙʟᴇ' if settings["spell_check"] else 'ᴅɪsᴀʙʟᴇ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐈𝐌𝐃𝐁',
-                    callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["imdb"] else '❌ 𝐍𝐎',
-                    callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}',
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    '𝐒𝐏𝐄𝐋𝐋 𝐂𝐇𝐄𝐂𝐊',
-                    callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["spell_check"] else '❌ 𝐍𝐎',
-                    callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}',
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    '𝐖𝐄𝐋𝐂𝐎𝐌𝐄',
-                    callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["welcome"] else '❌ 𝐍𝐎',
-                    callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',
-                ),
-            ],
+                InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴘᴀɢᴇ', callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}'),
+                 InlineKeyboardButton('ʙᴜᴛᴛᴏɴ' if settings["button"] else 'ᴛᴇxᴛ', callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
+            ]
         ]
-
         reply_markup = InlineKeyboardMarkup(buttons)
-
         await message.reply_text(
             text=f"<b>𝙲𝙷𝙰𝙽𝙶𝙴 𝚃𝙷𝙴 𝙱𝙾𝚃 𝚂𝙴𝚃𝚃𝙸𝙽𝙶𝚂 𝙵𝙾𝚁 {title}..⚙</b>",
             reply_markup=reply_markup,
