@@ -37,6 +37,7 @@ class temp(object):
     ME = None
     CURRENT=int(os.environ.get("SKIP", 2))
     CANCEL = False
+    FILES = {}
     MELCOW = {}
     U_NAME = None
     B_NAME = None
