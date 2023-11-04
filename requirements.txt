@@ -10,4 +10,5 @@ bs4
 heroku3
 pynewtonmath
 pytz
+shortzy
 aiohttp
