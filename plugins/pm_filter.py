@@ -229,24 +229,24 @@ async def language_check(bot, query):
                        ]
             )
             if offset != "":
-            key = f"{message.chat.id}-{message.id}"
-            BUTTONS[key] = search
-            req = message.from_user.id if message.from_user else 0
-            btn.append(
-                [InlineKeyboardButton(text=f"🗓 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"),
-                 InlineKeyboardButton(text="ɴᴇxᴛ ⇉", callback_data=f"next_{req}_{key}_{offset}")]
-            )
-        else:
-            btn.append(
-                [InlineKeyboardButton(text="🗓 1/1", callback_data="pages")]
-            )
-        try:
-            await query.edit_message_reply_markup(
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-        except MessageNotModified:
-            pass
-        await query.answer()
+                key = f"{message.chat.id}-{message.id}"
+                BUTTONS[key] = search
+                req = message.from_user.id if message.from_user else 0
+                btn.append(
+                    [InlineKeyboardButton(text=f"🗓 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"),
+                     InlineKeyboardButton(text="ɴᴇxᴛ ⇉", callback_data=f"next_{req}_{key}_{offset}")]
+                )
+            else:
+                btn.append(
+                    [InlineKeyboardButton(text="🗓 1/1", callback_data="pages")]
+                )
+            try:
+                await query.edit_message_reply_markup(
+                    reply_markup=InlineKeyboardMarkup(btn)
+                )
+            except MessageNotModified:
+                pass
+            await query.answer()
     else:
         return await query.answer(f"Sᴏʀʀʏ, Nᴏ ғɪʟᴇs ғᴏᴜɴᴅ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {movie}.", show_alert=True)
 
