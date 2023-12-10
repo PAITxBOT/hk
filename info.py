@@ -14,7 +14,7 @@ def is_enabled(value, default):
 SESSION = environ.get('SESSION', 'Media_search')
 API_ID = int(environ.get('API_ID', '10261086'))
 API_HASH = environ.get('API_HASH', '9195dc0591fbdb22b5711bcd1f437dab')
-BOT_TOKEN = environ.get('BOT_TOKEN', "6953095010:AAGUE6lcsuqyhD4ya2lkAMk5b9tehrGYqT4")
+BOT_TOKEN = environ.get('BOT_TOKEN', "5339266080:AAFeCPMzGTQq59qq-ST0h_21GWunMv7LTmY")
 
 #Port
 PORT = environ.get("PORT", "8080")
@@ -35,8 +35,8 @@ AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_chan
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://loki:loki@cluster0.1afb5uo.mongodb.net/?retryWrites=true&w=majority")
-DATABASE_NAME = environ.get('DATABASE_NAME', "loki")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://privatexbot:privatexbot@cluster0.tlojxso.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_NAME = environ.get('DATABASE_NAME', "privatexbot")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
